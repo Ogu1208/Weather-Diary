@@ -13,7 +13,7 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-//@Transactional
+@Transactional
 public class JdbcMemoRepositoryTest {
     @Autowired
     JdbcMemoRepository jdbcMemoRepository;
@@ -22,13 +22,13 @@ public class JdbcMemoRepositoryTest {
     void insertMemoTest() {
 
         //given
-        Memo newMemo = new Memo(2, "insertMemoTest");
+        Memo newMemo = new Memo(2, "insertMemoTest2");
 
         //when
         jdbcMemoRepository.save(newMemo);
 
         //then
-        Optional<Memo> result = jdbcMemoRepository.findById(2);
+        Optional<Memo> result = jdbcMemoRepository.findById(1);
         assertEquals(result.get().getText(), "insertMemoTest");
     }
 
